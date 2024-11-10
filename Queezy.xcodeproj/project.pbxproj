@@ -17,7 +17,7 @@
 		055BA6932C98E573009D8405 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055BA6922C98E573009D8405 /* NetworkManager.swift */; };
 		055BA6952C98E5D3009D8405 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055BA6942C98E5D3009D8405 /* Question.swift */; };
 		055BA6972C98E6CC009D8405 /* QError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055BA6962C98E6CC009D8405 /* QError.swift */; };
-		055BA6992C98E743009D8405 /* QuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055BA6982C98E743009D8405 /* QuizManager.swift */; };
+		055BA6992C98E743009D8405 /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055BA6982C98E743009D8405 /* QuizController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		055BA6922C98E573009D8405 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		055BA6942C98E5D3009D8405 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		055BA6962C98E6CC009D8405 /* QError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QError.swift; sourceTree = "<group>"; };
-		055BA6982C98E743009D8405 /* QuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizManager.swift; sourceTree = "<group>"; };
+		055BA6982C98E743009D8405 /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				055BA67E2C98DD0C009D8405 /* QuizVC.swift */,
+				055BA6982C98E743009D8405 /* QuizController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -102,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				055BA6922C98E573009D8405 /* NetworkManager.swift */,
-				055BA6982C98E743009D8405 /* QuizManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -134,7 +134,6 @@
 		055BA6792C98DD0C009D8405 /* Queezy */ = {
 			isa = PBXGroup;
 			children = (
-				055BA6882C98DD0D009D8405 /* Info.plist */,
 				053CFFF72CA47B9900EBFB05 /* Utilities */,
 				053CFFF62CA47B7800EBFB05 /* Managers */,
 				053CFFF52CA47B6600EBFB05 /* Models */,
@@ -142,6 +141,7 @@
 				053CFFF32CA47B4200EBFB05 /* Custom Views */,
 				053CFFF12CA47B0D00EBFB05 /* Screens */,
 				053CFFF02CA47AC900EBFB05 /* Support */,
+				055BA6882C98DD0D009D8405 /* Info.plist */,
 			);
 			path = Queezy;
 			sourceTree = "<group>";
@@ -220,7 +220,7 @@
 				055BA67F2C98DD0C009D8405 /* QuizVC.swift in Sources */,
 				055BA6972C98E6CC009D8405 /* QError.swift in Sources */,
 				055BA67B2C98DD0C009D8405 /* AppDelegate.swift in Sources */,
-				055BA6992C98E743009D8405 /* QuizManager.swift in Sources */,
+				055BA6992C98E743009D8405 /* QuizController.swift in Sources */,
 				055BA68F2C98DD83009D8405 /* UIViewController+Ext.swift in Sources */,
 				055BA6912C98E275009D8405 /* QButton.swift in Sources */,
 				055BA6952C98E5D3009D8405 /* Question.swift in Sources */,
@@ -371,10 +371,13 @@
 				DEVELOPMENT_TEAM = 7Y6PV58YMX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Queezy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Queezy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,6 +385,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.ivandzz.Queezy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -398,10 +405,13 @@
 				DEVELOPMENT_TEAM = 7Y6PV58YMX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Queezy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Queezy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,6 +419,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.ivandzz.Queezy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

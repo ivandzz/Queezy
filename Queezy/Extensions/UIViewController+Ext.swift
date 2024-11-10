@@ -5,8 +5,6 @@
 //  Created by Іван Джулинський on 16/09/24.
 //
 
-import Foundation
-
 import UIKit
 import SwiftUI
 

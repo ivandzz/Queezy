@@ -7,16 +7,18 @@
 
 import Foundation
 
-class QuizManager {
+class QuizController {
     private var questions = [Question]()
     private var questionNumber = 0
     
     func getQuestions(completion: @escaping (Bool) -> Void) {
         NetworkManager.shared.getQuestions { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let questions):
-                self?.questions = questions
-                self?.questionNumber = 0
+                self.questions = questions
+                self.questionNumber = 0
                 completion(true)
             case .failure:
                 completion(false)
@@ -50,5 +52,3 @@ class QuizManager {
         return questionNumber >= questions.count
     }
 }
-
-

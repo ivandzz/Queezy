@@ -9,20 +9,23 @@ import UIKit
 
 class QuizVC: UIViewController {
     
+    //MARK: - Variables
     let foreground = UIView()
     let quizLabel = UILabel()
     let trueButton = QButton(title: "True")
     let falseButton = QButton(title: "False")
     let progressBar = UIProgressView()
     
-    var quizManager = QuizManager()
+    var controller = QuizController()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         fetchQuestions()
     }
     
+    //MARK: - UI Setup
     private func configureUI() {
         view.backgroundColor = .systemGray6
         configureForeground()
@@ -111,47 +114,50 @@ class QuizVC: UIViewController {
         ])
     }
     
+    //MARK: - Selectors
     @objc private func answerButtonPressed(_ sender: UIButton) {
         guard let answer = sender.title(for: .normal) else { return }
         
-        let isCorrect = quizManager.checkAnswer(answer)
+        let isCorrect = controller.checkAnswer(answer)
         sender.backgroundColor = isCorrect ? .green : .red
         
-        quizManager.nextQuestion()
+        controller.nextQuestion()
         updateUI()
     }
     
+    //MARK: - Helpers
     private func fetchQuestions() {
-        quizManager.getQuestions { [weak self] success in
+        controller.getQuestions { [weak self] success in
+            guard let self = self else { return }
+            
             DispatchQueue.main.async {
                 if success {
-                    self?.updateUI()
+                    self.updateUI()
                 } else {
-                    self?.quizLabel.text = "Failed to load questions"
+                    self.quizLabel.text = "Failed to load questions"
                 }
             }
         }
     }
     
     private func updateUI() {
-        if quizManager.isEnd() {
+        if controller.isEnd() {
             quizLabel.text = "You've completed another quiz!"
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.fetchQuestions()
             }
         } else {
-            quizLabel.text = quizManager.getQuestionLabel()
+            quizLabel.text = controller.getQuestionLabel()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.trueButton.backgroundColor = .systemBackground
                 self.falseButton.backgroundColor = .systemBackground
             }
             
-            progressBar.setProgress(quizManager.getProgress(), animated: true)
+            progressBar.setProgress(controller.getProgress(), animated: true)
         }
     }
-    
 }
 
 
@@ -165,4 +171,3 @@ struct QuizVC_Preview: PreviewProvider {
     }
 }
 #endif
-
