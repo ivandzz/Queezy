@@ -147,6 +147,8 @@ class QuizVC: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.fetchQuestions()
             }
+            
+            progressBar.setProgress(controller.getProgress(), animated: true)
         } else {
             quizLabel.text = controller.getQuestionLabel()
 
