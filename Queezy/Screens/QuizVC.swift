@@ -147,7 +147,7 @@ class QuizVC: UIViewController {
             
             quizLabel.text = "You've completed another quiz! \n Your score is \(controller.score)/10!"
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            UIView.animate(withDuration: 0.3) {
                 self.trueButton.backgroundColor = .systemBackground
                 self.falseButton.backgroundColor = .systemBackground
             }
@@ -165,7 +165,7 @@ class QuizVC: UIViewController {
         } else {
             quizLabel.text = controller.getQuestionLabel()
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            UIView.animate(withDuration: 0.3) {
                 self.trueButton.backgroundColor = .systemBackground
                 self.falseButton.backgroundColor = .systemBackground
             }
