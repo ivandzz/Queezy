@@ -142,10 +142,23 @@ class QuizVC: UIViewController {
     
     private func updateUI() {
         if controller.isEnd() {
+            trueButton.isEnabled = false
+            falseButton.isEnabled = false
+            
             quizLabel.text = "You've completed another quiz! \n Your score is \(controller.score)/10!"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.trueButton.backgroundColor = .systemBackground
+                self.falseButton.backgroundColor = .systemBackground
+            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.fetchQuestions()
+            
+                self.controller.score = 0
+                
+                self.trueButton.isEnabled = true
+                self.falseButton.isEnabled = true
             }
             
             progressBar.setProgress(controller.getProgress(), animated: true)
