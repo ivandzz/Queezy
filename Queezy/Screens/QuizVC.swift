@@ -142,7 +142,7 @@ class QuizVC: UIViewController {
     
     private func updateUI() {
         if controller.isEnd() {
-            quizLabel.text = "You've completed another quiz!"
+            quizLabel.text = "You've completed another quiz! \n Your score is \(controller.score)/10!"
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.fetchQuestions()

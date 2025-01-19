@@ -8,8 +8,10 @@
 import Foundation
 
 class QuizController {
+    
     private var questions = [Question]()
     private var questionNumber = 0
+    public var score = 0
     
     func getQuestions(completion: @escaping (Bool) -> Void) {
         NetworkManager.shared.getQuestions { [weak self] result in
@@ -35,7 +37,14 @@ class QuizController {
     func checkAnswer(_ answer: String) -> Bool {
         guard questionNumber < questions.count else { return false }
         
-        return questions[questionNumber].correct_answer == answer
+        let isCorrect = questions[questionNumber].correct_answer == answer
+        
+        if isCorrect {
+            score += 1
+        }
+        
+        return isCorrect
+
     }
     
     func nextQuestion() {
