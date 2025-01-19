@@ -31,7 +31,7 @@ class QuizController {
     func getQuestionLabel() -> String {
         guard questionNumber < questions.count else { return "Error: Invalid question" }
         
-        return questions[questionNumber].question
+        return questions[questionNumber].question.decodeHTMLEntities()
     }
     
     func checkAnswer(_ answer: String) -> Bool {
